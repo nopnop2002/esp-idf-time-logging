@@ -7,6 +7,7 @@
 #include "esp_log.h"
 #include "esp_sntp.h"
 
+#include "time_logging.h"
 
 #if (ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0))
 #define sntp_setoperatingmode esp_sntp_setoperatingmode
@@ -14,16 +15,16 @@
 #define sntp_init esp_sntp_init
 #endif
 
-bool __enable_format = false;
+int __format = FORMAT_DEFAULT;
 char __time_format[256];
 bool __init_sntp = false;
 
 int logging_vprintf( const char *fmt, va_list l ) {
-	if (__enable_format == false) {
+	if (__format == FORMAT_DEFAULT) {
 		return vprintf( fmt, l );
 	}
 
-	// Get the current date and time based on the timezone
+	// Get current date & time
 	time_t now;
 	struct tm timeinfo;
 	time(&now);
@@ -32,9 +33,18 @@ int logging_vprintf( const char *fmt, va_list l ) {
 
 	// Convert from tm to string using format
 	char time_str[256];
-	size_t time_str_len = strftime(time_str, 256, __time_format, &timeinfo);
-	//printf("time_str_len=%zd %s\n", time_str_len, time_str);
-	//printf("[%s]\n", fmt);
+	memset(time_str, 0, sizeof(time_str));
+	size_t time_str_len;
+	if (__format == FORMAT_NULL) {
+		time_str_len = 0;
+	} else {
+		strcpy(time_str, "(");
+		time_str_len = strftime(&time_str[1], 256, __time_format, &timeinfo);
+		strcat(time_str, ")");
+		time_str_len = time_str_len + 2;
+		//printf("time_str_len=%zd %s\n", time_str_len, time_str);
+		//printf("[%s]\n", fmt);
+	}
 
 	// Get formatted string length
 	va_list _l;
@@ -53,17 +63,16 @@ int logging_vprintf( const char *fmt, va_list l ) {
 	vsnprintf(src, len + 1, fmt, _l);
 	//int ret = vprintf( fmt, l );
 
-	// Replace tick to date & time
 	int dpos = 0;
 	int pass = 0;
+	// Replace tick to date & time
 	for (int spos=0;spos<len;spos++) {
 		if (src[spos] == '(') {
-			strcat(dst, "(");
 			strcat(dst, time_str);
 			pass = 1;
-			
+		
 		} else if (src[spos] == ')') {
-			strcat(dst, &src[spos]);
+			strcat(dst, &src[spos+1]);
 			break;
 
 		} else {
@@ -127,10 +136,14 @@ void time_logging_init(char * time_format) {
 		__init_sntp = true;
 	}
 	
-	__enable_format = false;
-	if (strlen(time_format)) {
+
+	if (time_format == NULL) {
+		__format = FORMAT_NULL;
+	} else if (strlen(time_format)) {
 		strcpy(__time_format, time_format);
-		__enable_format = true;
+		__format = FORMAT_TIME;
+	} else {
+		__format = FORMAT_DEFAULT;
 	}
 	esp_log_set_vprintf(logging_vprintf);
 }

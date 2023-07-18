@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+typedef enum {FORMAT_DEFAULT, FORMAT_NULL, FORMAT_TIME} FORMAT;
+
 int logging_vprintf( const char *fmt, va_list l );
 void time_logging_init(char * format);
 

@@ -6,7 +6,7 @@ The Logging library contains the "esp_log_set_vprintf" function.
 This function allows you to customize the logging display.   
 By default the log shows the number of ticks since the start, but you can change it to the current date and time.   
 
-![ScreenShot](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/9af8a4d1-b987-4b51-9655-fd8c8c2cc29b)
+![ScreenShot](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/47d30fe7-b382-4fcd-9c71-62fee601557f)
 
 # Software requirements
 esp-idf v4.4/v5.x.   
@@ -28,7 +28,7 @@ This project requires a network connection and NTP Server.
 
 
 # API   
-- Enable logging with current date & time.   
+- Enable date & time.   
  Display the date and time using the strftime function.   
  The format is the same as the strftime function.   
  Illegal formats are not considered.   
@@ -37,8 +37,14 @@ This project requires a network connection and NTP Server.
 time_logging_init("%Y/%m/%d %H:%M:%S");
 ```
 
-- Disable logging with current date & time.   
- Return to tick display.   
+- Disable date & time.   
+```
+time_logging_init(NULL);
+```
+
+- Return to default.   
 ```
 time_logging_init("");
 ```
+
+

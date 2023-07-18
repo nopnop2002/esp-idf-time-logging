@@ -159,8 +159,14 @@ void app_main(void)
 	ESP_LOGW(TAG, "This is warning level");
 	ESP_LOGE(TAG, "This is error level");
 
-	// Disable logging with current time
+	// Return to default
 	time_logging_init("");
+	ESP_LOGI(TAG, "This is info level");
+	ESP_LOGW(TAG, "This is warning level");
+	ESP_LOGE(TAG, "This is error level");
+
+	// Disable time
+	time_logging_init(NULL);
 	ESP_LOGI(TAG, "This is info level");
 	ESP_LOGW(TAG, "This is warning level");
 	ESP_LOGE(TAG, "This is error level");
