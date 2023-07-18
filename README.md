@@ -34,7 +34,7 @@ This project requires a NTP Server.
 # API   
 - Enable logging with current date & time.   
  The format is the same as the strftime function.   
- Formatting errors are not taken into account.   
+ Illegal formats are not considered.   
  Unfortunately the format of the strftime function does not have milliseconds.   
 ```
 time_logging_init("%Y/%m/%d %H:%M:%S");
