@@ -21,7 +21,7 @@ idf.py flash
 ```
 
 # Configuration   
-![config-top](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/64fe4ac1-862d-4b90-8a19-9a911a05b201)
+![config-top](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/95009f5f-c860-4e9b-838a-33eb9a1f3fbd)
 
 ## Configuration for Network
 This project requires a network connection.
