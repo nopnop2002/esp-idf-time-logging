@@ -3,6 +3,7 @@ Show the current date and time in the logging.
 
 esp-idf has a Logging library.   
 The Logging library contains the "esp_log_set_vprintf" function.   
+This function allows you to customize the logging display.   
 By default the log shows the tick count, but you can change it to the current date and time.   
 
 ![ScreenShot](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/9af8a4d1-b987-4b51-9655-fd8c8c2cc29b)
