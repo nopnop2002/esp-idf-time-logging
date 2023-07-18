@@ -31,13 +31,14 @@ This project requires a NTP Server.
 ![config-ntp](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/21a953af-6555-405d-8944-893cf5d28b3c)
 
 # API   
-- Enable logging with current time.   
- The format is the same as the strftime function.
+- Enable logging with current date & time.   
+ The format is the same as the strftime function.   
 ```
 time_logging_init("%Y/%m/%d %H:%M:%S");
 ```
 
-- Disable logging with current time
+- Disable logging with current date & time.   
+ Return to tick display.   
 ```
 time_logging_init("");
 ```
