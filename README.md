@@ -1,5 +1,5 @@
 # esp-idf-time-logging
-Logging with current time for esp-idf.   
+Show the current date and time in the logging.   
 
 esp-idf has a Logging library.   
 The Logging library contains the "esp_log_set_vprintf" function.   
