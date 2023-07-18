@@ -33,6 +33,7 @@ This project requires a NTP Server.
 
 # API   
 - Enable logging with current date & time.   
+ Display the date and time using the strftime function.   
  The format is the same as the strftime function.   
  Illegal formats are not considered.   
  Unfortunately the format of the strftime function does not have milliseconds.   
