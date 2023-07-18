@@ -32,6 +32,7 @@ int logging_vprintf( const char *fmt, va_list l ) {
 	localtime_r(&now, &timeinfo);
 
 	// Convert from tm to string using format
+	//printf("[%s]\n", fmt);
 	char time_str[256];
 	memset(time_str, 0, sizeof(time_str));
 	size_t time_str_len;
@@ -43,30 +44,25 @@ int logging_vprintf( const char *fmt, va_list l ) {
 		strcat(time_str, ")");
 		time_str_len = time_str_len + 2;
 		//printf("time_str_len=%zd %s\n", time_str_len, time_str);
-		//printf("[%s]\n", fmt);
 	}
 
 	// Get formatted string length
-	va_list _l;
-	int len;
-	va_copy(_l, l);
-	len = vsnprintf(NULL, 0, fmt, _l);
-	va_end(_l);
-	//printf("len=%d\n", len);
+	int formatted_len = vsnprintf(NULL, 0, fmt, l);
+	//printf("formatted_len=%d\n", formatted_len);
 
 	// Allocate memory
 	char *src;
 	char *dst;
-	src = malloc(len + 1);
-	dst = malloc(len + time_str_len + 1);
-	memset(dst, 0, len + time_str_len + 1);
-	vsnprintf(src, len + 1, fmt, _l);
+	src = malloc(formatted_len + 1);
+	dst = malloc(formatted_len + time_str_len + 1);
+	memset(dst, 0, formatted_len + time_str_len + 1);
+	vsnprintf(src, formatted_len + 1, fmt, l);
 	//int ret = vprintf( fmt, l );
 
 	int dpos = 0;
 	int pass = 0;
-	// Replace tick to date & time
-	for (int spos=0;spos<len;spos++) {
+	// Replace timestamp to date & time
+	for (int spos=0;spos<formatted_len;spos++) {
 		if (src[spos] == '(') {
 			strcat(dst, time_str);
 			pass = 1;
