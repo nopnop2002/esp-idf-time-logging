@@ -21,15 +21,11 @@ idf.py flash
 ```
 
 # Configuration   
-![config-top](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/95009f5f-c860-4e9b-838a-33eb9a1f3fbd)
+![config-top](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/9ee1861a-d778-446b-95d5-948b1365a1df)
 
-## Configuration for Network
-This project requires a network connection.
-![config-network](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/b8ddeb00-b554-467b-b3de-f3aec63d16c1)
+This project requires a network connection and NTP Server.
+![config-logging](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/a914cf25-5519-4620-9c20-908d09624e1f)
 
-## Configuration for NTP Server
-This project requires a NTP Server.
-![config-ntp](https://github.com/nopnop2002/esp-idf-time-logging/assets/6020549/21a953af-6555-405d-8944-893cf5d28b3c)
 
 # API   
 - Enable logging with current date & time.   
