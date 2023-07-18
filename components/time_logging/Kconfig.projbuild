@@ -1,0 +1,16 @@
+menu "NTP Configuration"
+
+	config NTP_SERVER
+		string "Hostname for NTP Server"
+		default "pool.ntp.org"
+		help
+			Hostname for NTP Server.
+
+	config LOCAL_TIMEZONE
+		int "Your local timezone"
+		range -23 23
+		default 0
+		help
+			Your local timezone.  When it is 0, Greenwich Mean Time.
+
+endmenu
