@@ -6,7 +6,7 @@ You can choose from the following two logging formats.
 - Milleseconds Since Boot(Default format)   
 ![Image](https://github.com/user-attachments/assets/71cd9c9a-29e3-4eb6-8e9b-647653a87e60)
 
-- System Time
+- System Time   
 ![Image](https://github.com/user-attachments/assets/e114dcb9-5a75-4eba-b60d-a2205d691f0d)
 
 The Logging library contains the "esp_log_set_vprintf" function.   
