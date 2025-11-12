@@ -35,22 +35,22 @@ This project requires a network connection and NTP Server.
 
 # API   
 - Enable date & time.   
- Display the date and time using the strftime function.   
- The format is the same as the strftime function.   
- Illegal formats are not considered.   
- Unfortunately the format of the strftime function does not have milliseconds.   
-```
-time_logging_init("%Y/%m/%d %H:%M:%S");
-```
+	Display the date and time using the strftime function.   
+	The format is the same as the strftime function.   
+	Illegal formats are not considered.   
+	Unfortunately the format of the strftime function does not have milliseconds.   
+	```
+	time_logging_init("%Y/%m/%d %H:%M:%S");
+	```
 
 - Disable date & time.   
-```
-time_logging_init(NULL);
-```
+	```
+	time_logging_init(NULL);
+	```
 
 - Return to default.   
-```
-time_logging_init("");
-```
+	```
+	time_logging_init("");
+	```
 
 
